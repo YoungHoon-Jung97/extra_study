@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>LoadTest01.html</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+	
+	// ※ 『$(선택자).load("로드를 원하는 hrml 문서의 위치와 이름");』
+	//    - jQuery 의 기능이 수행되는 과정에서 다른 html 문서를 로드
+	//    - HTML 을 읽어들여서 DOM 에 삽입하는 기능을 수행
+	
+	$(document).ready(function()
+	{
+		$("#btn .btnLoad").click(function()
+		{
+			// 테스트
+			//alert("확인");
+			
+			$("#ctlGrid").load("LoadTest02.html");
+			//-- 『비동기』 방식으로 페이지 로드
+			
+			// 따로 callBack state 등 없이 로드 가능
+			
+			window.alert("여기 작성한 메세지가 먼저 출력된다. 이유는 비동기");
+			//-- 이 메세지 박스가 먼저 출력~!!!
+			  
+		});	
+	});
+	
+	
+</script>
+</head>
+<body>
+
+<div>
+	<h1>jQuery의 load() 활용 실습</h1>
+	<hr>
+</div>
+
+<div>
+	<div id="btn">
+		<div class="btnLoad">HTML 읽어오기 버튼</div>
+	</div>
+	<br>
+	
+	<div id="ctlGrid">
+	</div>
+</div>
+
+</body>
+</html>
