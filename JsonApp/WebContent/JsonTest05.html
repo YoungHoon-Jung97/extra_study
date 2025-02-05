@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<script type="text/javascript">
+	
+	var myJsonObject5 = 
+	{
+			"test" : function(args)
+			{
+				
+				alert("Method Test : " + args);
+			}
+			
+	
+	}
+	
+	var t = myJsonObject5.test;
+	
+</script>
+
+</head>
+<body>
+
+<form action="">
+	<input type="button"  value="click1"  onclick="t('jehoon')"/>
+	
+	<input type="button"  value="click2"  
+	onclick="eval('var a = '+ myJsonObject5.test);a('jehoon');"/>
+	
+	
+	<input type="button"  value="click3" 
+	 onclick="eval('('+ myJsonObject5.test + ')(\'jehoon\')')"/>
+</form>
+
+</body>
+</html>

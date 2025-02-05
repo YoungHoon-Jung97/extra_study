@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<script type="text/javascript">
+
+	var myJsonObject4 =
+	{
+			"test" : function()
+			{
+				alert("Method test");
+			}
+			
+	}
+	
+</script>
+
+</head>
+<body>
+
+<form action="">
+	<input type="button"  value="click1" onclick="myJsonObject4.test"/>
+	<!--x  -->
+	
+	<input type="button"  value="click2" onclick="alert(myJsonObject4.test)"/>
+	<!--
+	function()
+	{
+		alert("Method test");
+	}  
+	-->
+	
+	<input type="button"  value="click3" onclick="alert(myJsonObject4.test())"/>
+	
+	<!--eval(): 변수를 자바스크립트의 함수처럼 사용할 수 있도록 해 주는 함수  -->
+	<!--  		즉, 정적인 문자열을 동적인 코드 형식으로 처리해 주는 함수-->
+	<!--  		보안성 이슈로 조심히 다루어야 할 함수-->
+	
+	<input type="button"  value="click4" onclick="eval('a=' + myJsonObject4.test); a();"/>
+	
+</form>
+
+</body>
+</html>

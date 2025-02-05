@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JsonTest08.html</title>
+<script type="text/javascript">
+
+
+	/* var myJsonObject8 = {"test" : ["ccc", "ddd"], "exam" :["kkk", "ppp"]} */
+
+
+	var myJsonObject8 =
+	{
+		"test" :
+		[
+			"ccc", "ddd"
+		]
+		, "exam" :
+		[
+			"kkk", "ppp"
+		]
+	
+	}
+	
+	
+	
+</script>
+</head>
+<body>
+
+<form>
+	
+	<input type="button" value="click1" onclick="alert(myJsonObject8)">
+	<!-- → [object Object] -->
+	
+	<input type="button" value="click2" onclick="alert(typeof myJsonObject8)">
+	<!-- → object -->
+	
+	
+	<br><br>	
+	
+	
+	<input type="button" value="click3" onclick="alert(myJsonObject8.test)">
+	<!-- → ccc,ddd  -->
+	
+	<input type="button" value="click4" onclick="alert(typeof (myJsonObject8.test))">
+	<!-- → object -->
+	
+	
+	<br><br>
+	
+	
+	<input type="button" value="click5" onclick="alert(myJsonObject8.test[0])">
+	<!-- → ccc -->
+	
+	
+	<input type="button" value="click6" onclick="alert(typeof (myJsonObject8.test[0]))">
+	<!-- → string -->	
+	
+	
+	<br><br>
+
+	<!-- ※ 객체 구조상 2차원 배열의 형태로 볼 수 있지만 -->
+	<!--    다음과 같은 접근이나 처리는 불가능 하다. -->
+
+	<!-- ccc -->
+	<input type="button" value="click7" onclick="alert(myJsonObject8.[0][0])">
+	<!-- → Ⅹ -->
+
+
+	<!-- ppp -->
+	<input type="button" value="click8" onclick="alert(myJsonObject8.[1][1])">
+	<!-- → Ⅹ -->
+
+
+
+
+	
+</form>
+
+</body>
+</html>

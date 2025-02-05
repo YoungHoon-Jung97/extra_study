@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<script type="text/javascript">
+	
+	function printString(cnt)
+	{
+		
+		alert(cnt);
+	}
+	
+	
+	window.onload = function()
+	{
+		var temp = "printString('First')";
+		
+		/* JSON */
+		var printList = 
+		{
+			"1" : "printString('Hi JSON~!!!')"
+			, "2" : temp
+			, "3" : "alert('Second')"
+			, "4" : "printString('Third')"
+		}
+		
+		//반복문 구성
+		for (var i=1; i<5; i++)		// 1 2 3 4
+		{
+			eval(printList[i]);
+		}
+	};
+	
+</script>
+</head>
+<body>
+
+
+
+</body>
+</html>
