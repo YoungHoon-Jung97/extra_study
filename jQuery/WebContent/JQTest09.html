@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JQTest09</title>
+<style type="text/css">
+	ul
+	{
+		list-style: none;
+	}
+</style>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.innerfade.js"></script>
+<script type="text/javascript">
+
+	$(document).ready(function()
+	{
+		// jquery.innerfade.js
+		
+		$("#innerFade").innerfade(
+		{
+			animationtype: 'fade'
+			, speed: 'nomal'
+			, timeout: '2000'
+			, type: 'sequence'
+		});
+	
+	
+	});
+	
+</script>
+
+</head>
+<body>
+
+<ul id="innerFade">
+	<li>
+		<img alt="" src="images/obj01.jpg" style="width: 50%">
+	</li>
+	<li>
+		<img alt="" src="images/obj02.jpg" style="width: 50%">
+	</li>
+	<li>
+		<img alt="" src="images/obj03.jpg" style="width: 50%">
+	</li>
+	<li>
+		<img alt="" src="images/obj04.jpg" style="width: 50%">
+	</li>
+	<li>
+		<img alt="" src="images/obj05.jpg" style="width: 50%">
+	</li>
+</ul>
+
+</body>
+</html>

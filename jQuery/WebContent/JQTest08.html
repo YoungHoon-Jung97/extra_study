@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JQTest08</title>
+<style type="text/css">
+	div.page
+	{
+		border: 1px solid gray;
+		padding: 3px;
+		margin: 2px;
+		position: absolute;
+		right: 10px;
+		top: 180px;
+	}
+</style>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+	
+	$(document).ready(function()
+	{
+		$("button").css({"display":"block", "width":"200px"});
+		
+		$("button").click(function()
+		{
+			//$(".page").toggle("slow");
+			//$(this).next().toggle("slow");
+			
+			// 『$(선택자).next()』 : document 구조 상 다음 엘리먼트
+			
+			$(this).next().toggle(100, function()
+			{
+				alert("토글 기능 테스트 완료~!!!");
+			});
+			
+		});
+		
+	});
+</script>
+
+</head>
+<body>
+
+show()/hide()/toggle()<br>
+slideDown()/slideUp()/slideToggle()<br>
+fadeIn()/fadeOut()/fadeToggle()<br>
+<br><br>
+
+<button>Toggle(토글) 버튼</button>
+<div class="page">
+	<h1>jQuery Toggle</h1>
+	<p>
+		show()/hide()<br>
+		toggle()<br>
+		slideDown()/slideUp()<br>
+		slideToggle()<br>
+		fadeIn()/fadeOut()<br>
+		fadeToggle()<br>
+	</p>
+</div>
+
+<button>Toggle(토글) 버튼</button>
+<div class="page">
+	<h1>jQuery Toggle</h1>
+	<p>
+		show()/hide()<br>
+		toggle()<br>
+		slideDown()/slideUp()<br>
+		slideToggle()<br>
+		fadeIn()/fadeOut()<br>
+		fadeToggle()<br>
+	</p>
+</div>
+
+<button>Toggle(토글) 버튼</button>
+<div class="page">
+	<h1>jQuery Toggle</h1>
+	<p>
+		show()/hide()<br>
+		toggle()<br>
+		slideDown()/slideUp()<br>
+		slideToggle()<br>
+		fadeIn()/fadeOut()<br>
+		fadeToggle()<br>
+	</p>
+</div>
+
+<button>Toggle(토글) 버튼</button>
+<div class="page">
+	<h1>jQuery Toggle</h1>
+	<p>
+		show()/hide()<br>
+		toggle()<br>
+		slideDown()/slideUp()<br>
+		slideToggle()<br>
+		fadeIn()/fadeOut()<br>
+		fadeToggle()<br>
+	</p>
+</div>
+
+<button>Toggle(토글) 버튼</button>
+<div class="page">
+	<h1>jQuery Toggle</h1>
+	<p>
+		show()/hide()<br>
+		toggle()<br>
+		slideDown()/slideUp()<br>
+		slideToggle()<br>
+		fadeIn()/fadeOut()<br>
+		fadeToggle()<br>
+	</p>
+</div>
+
+
+
+</body>
+</html>

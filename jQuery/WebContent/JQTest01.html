@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JQTest01.html</title>
+
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+
+
+<script type="text/javascript">
+
+	$(function()
+	{
+		var d= 300;
+		
+		$("#navigation a").each(function()
+		{
+			$(this).stop().animate({"marginTop":"-80px"}, d+=150);
+			//$(this).stop().animate(속성, 값);
+			// 속성은 {"속성이름":"속성값"}
+		});
+		
+		$("#navigation > li").hover(function()
+		{
+			$("a", $(this)).stop().animate({"marginTop":"-2px"},10)
+		}, function()
+		{
+			$("a", $(this)).stop().animate({"marginTop":"-80px"}, 900)
+		});
+		
+		
+	});
+	// 자바스크립트로 짤 수 는 있는데 코드가 엄청 필요하다...
+
+</script>
+
+
+
+</head>
+<body>
+
+<table>
+	<tr>
+		<td>
+			<ul id="navigation">
+				<li class="home"><a href="#"><span>Home</span></a></li>
+				<li class="about"><a href="#"><span>about</span></a></li>
+				<li class="search"><a href="#"><span>search</span></a></li>
+				<li class="photos"><a href="#"><span>photos</span></a></li>
+				<li class="rssfeed"><a href="#"><span>rssfeed</span></a></li>
+				<li class="podcasts"><a href="#"><span>podcasts</span></a></li>
+				<li class="contact"><a href="#"><span>contact</span></a></li>
+			</ul>
+		</td>
+	</tr>
+</table>
+</body>
+</html>

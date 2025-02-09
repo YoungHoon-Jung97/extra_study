@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JQTest03.html</title>
+<style type="text/css">
+	*
+	{
+		margin: 0px;
+		padding: 0px;
+	}
+	div
+	{
+		margin: 5px;
+		padding: 3px;
+		border: 3px solid black;
+		border-radius: 10px;
+	}
+</style>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+	
+	$(document).ready(function()
+	{
+		//alert("확인");
+		
+		$("div").click(function()
+		{
+			//alert("test");
+			
+			//alert($(this).html()); -> <h1>A강의실</h1> <p>JAVA 수업 중</p>
+			
+			//alert($(this).text());	-> A강의실  JAVA 수업 중
+			
+			//alert($("h1", this).text()); -> A강의실
+			
+			//alert($("p", this).text()); ->  JAVA 수업 중
+			
+			var h1 = $("h1", this).text();
+			var p = $("p", this).text();
+		
+			alert(h1 + " / " + p);
+			// -> A강의실 / JAVA 수업 중
+			
+			
+		})
+		
+		
+		
+	});
+	
+</script>
+
+
+</head>
+<body>
+
+<div>
+	<h1>A강의실</h1>
+	<p>JAVA 수업 중</p>
+</div>
+
+<div>
+	<h1>B강의실</h1>
+	<p>닷넷 수업 중</p>
+</div>
+
+<div>
+	<h1>C강의실</h1>
+	<p>오라클 수업 중</p>
+</div>
+
+<div>
+	<h1>D강의실</h1>
+	<p>ASP 수업 중</p>
+</div>
+
+<div>
+	<h1>E강의실</h1>
+	<p>JSP 수업 중</p>
+</div>
+
+<div>
+	<h1>F강의실</h1>
+	<p>제이쿼리 수업 중</p>
+</div>
+
+</body>
+</html>

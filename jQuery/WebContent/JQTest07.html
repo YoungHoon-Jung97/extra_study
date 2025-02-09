@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JQTest07.html</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+	
+	/*
+	$(function()
+	{
+		
+	});
+	*/
+	
+	$(document).ready(function()
+	{
+		/*
+		$("#allCheck").change(function()
+		{
+			// 테스트
+			alert("change");
+		});
+		*/
+		
+		$("#allCheck").click(function()
+		{
+			// 테스트
+			//alert("click");
+			
+			// 테스트
+			//alert( $(this).attr("checked"));			//-- undefined / undefined
+			
+			//alert($(this).prop("checked"));			//-- 속성 → true / false
+			//alert(this.checked);						//-- 속성 → true / false
+			//alert( $(this).is(":checked"));			//-- 속성 → true/ false
+			
+			//$("div > input:checkbox").prop("checked", this.checked);
+
+			//$("div > input:checkbox").attr( 'checked', this.checked );
+			//--> 한번 밖에 전체 선택이 안된다.
+			// javascript는 이럴 때는 100% null이야, undefined야 라고 하기가 어렵다
+			// 그래서 어디에서는 attr가 되고 , 어디에서는 prop 를 사용해야하고..
+			
+			// 방법 1
+			//$("div > input:checkbox").prop("checked", this.checked);
+			
+			// 방법 2
+			// 『$(선택자).children()』
+			$("div").children().prop("checked", this.checked);
+		});
+		
+		
+	});
+	
+</script>
+</head>
+<body>
+
+<label>
+	<input type="checkbox" id="allCheck">
+	<span style="font-weight: bold;">모두 선택</span>
+</label>
+<br><br>
+
+<div>
+	<input type="checkbox" id="check1"><label for="check1">바나나</label><br>
+	<input type="checkbox" id="check2"><label for="check2">딸기</label><br>
+	<input type="checkbox" id="check3"><label for="check3">복숭아</label><br>
+	<input type="checkbox" id="check4"><label for="check4">수박</label><br>
+	<input type="checkbox" id="check5"><label for="check5">멜론</label><br>
+</div>
+
+</body>
+</html>
