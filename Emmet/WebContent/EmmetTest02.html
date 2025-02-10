@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>EmmetTest02.html</title>
+</head>
+<body>
+
+
+실습 1.
+h1#title.blue{Emmet}+(h2.subtitle{소제목}+p.content{내용})*5
+<h1 id="title" class="blue">Emmet</h1>
+<h2 class="subtitle">소제목</h2>
+<p class="content">내용</p>
+<h2 class="subtitle">소제목</h2>
+<p class="content">내용</p>
+<h2 class="subtitle">소제목</h2>
+<p class="content">내용</p>
+<h2 class="subtitle">소제목</h2>
+<p class="content">내용</p>
+<h2 class="subtitle">소제목</h2>
+<p class="content">내용</p>
+
+
+br*8
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+조합해서 하나하나해도 됨!
+<table id="id"><tr>
+	<td><div id="box"></div></td>
+	<td></td>
+	<td></td>
+</tr>
+<tr>
+	<td></td>
+	<td></td>
+	<td></td>
+</tr></table>
+
+
+
+실습2
+table>tr.line*3>(td.col{내용$}+td.comm{부연설명})*3
+<table>
+	<tr class="line">
+		<td class="col">내용1</td>
+		<td class="comm">부연설명</td>
+		<td class="col">내용2</td>
+		<td class="comm">부연설명</td>
+		<td class="col">내용3</td>
+		<td class="comm">부연설명</td>
+	</tr>
+	<tr class="line">
+		<td class="col">내용1</td>
+		<td class="comm">부연설명</td>
+		<td class="col">내용2</td>
+		<td class="comm">부연설명</td>
+		<td class="col">내용3</td>
+		<td class="comm">부연설명</td>
+	</tr>
+	<tr class="line">
+		<td class="col">내용1</td>
+		<td class="comm">부연설명</td>
+		<td class="col">내용2</td>
+		<td class="comm">부연설명</td>
+		<td class="col">내용3</td>
+		<td class="comm">부연설명</td>
+	</tr>
+</table>
+
+<!-- 답 -->
+table>tr.line*3>((td.col{내용$))*3(td.comm{부연설명}))
+
+
+실습 3. 
+
+table#tbl>tr#line$*2>(th#haed${항목$}+(td.col{내용$})*3)
+<table id="tbl">
+	<tr id="line1">
+		<th id="haed1">항목1</th>
+		<td class="col">내용1</td>
+		<td class="col">내용2</td>
+		<td class="col">내용3</td>
+	</tr>
+	<tr id="line2">
+		<th id="haed2">항목2</th>
+		<td class="col">내용1</td>
+		<td class="col">내용2</td>
+		<td class="col">내용3</td>
+	</tr>
+</table>
+
+
+
+
+
+
+
+
+</body>
+</html>
