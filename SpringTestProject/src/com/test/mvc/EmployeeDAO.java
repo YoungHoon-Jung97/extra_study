@@ -29,30 +29,25 @@ public class EmployeeDAO implements IEmployeeDAO
 		this.dataSource = dataSource;
 	}
 
-	@Override
 	public ArrayList<Employee> list() throws SQLException
-	{
+	{	
 		ArrayList<Employee> result = new ArrayList<Employee>();
 		
 		Connection conn = dataSource.getConnection();
 		
-		Statement stmt = conn.createStatement();
-		
-		String sql="SELECT EMPLOYEEID, NAME"
-				+ ", SSN, BIRTHDAY, LUNAR"
-				+ ", LUNARNAME, TELEPHONE"
-				+ ", DEPARTMENTID, DEPARTMENTNAME"
-				+ ", POSITIONID, POSITIONNAME, REGIONID"
-				+ ", REGIONNAME, BASICPAY, EXTRAPAY"
-				+ ", PAY, GRADE"
+		String sql = "SELECT EMPLOYEEID, NAME, SSN, BIRTHDAY, LUNAR, LUNARNAME"
+				+ ", TELEPHONE, DEPARTMENTID, DEPARTMENTNAME, POSITIONID, POSITIONNAME"
+				+ ", REGIONID, REGIONNAME, BASICPAY, EXTRAPAY, PAY, GRADE"
 				+ " FROM EMPLOYEEVIEW"
-				+"	ORDER BY EMPLOYEEID";
-			
-		ResultSet rs = stmt.executeQuery(sql);
+				+ " ORDER BY EMPLOYEEID";
 		
-		while(rs.next())
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		
+		ResultSet rs = pstmt.executeQuery();
+		
+		while (rs.next())
 		{
-			Employee employee =new Employee();
+			Employee employee = new Employee();
 			
 			employee.setEmployeeId(rs.getString("EMPLOYEEID"));
 			employee.setName(rs.getString("NAME"));
@@ -73,14 +68,15 @@ public class EmployeeDAO implements IEmployeeDAO
 			employee.setGrade(rs.getInt("GRADE"));
 			
 			result.add(employee);
-			
 		}
 		
 		rs.close();
-		stmt.close();
+		pstmt.close();
+		conn.close();
 		
 		return result;
 	}
+
 
 	@Override
 	public ArrayList<Region> regionList() throws SQLException
@@ -171,7 +167,7 @@ public class EmployeeDAO implements IEmployeeDAO
 		rs.close();
 		stmt.close();
 		
-		return null;
+		return result;
 	}
 
 	@Override
@@ -201,19 +197,16 @@ public class EmployeeDAO implements IEmployeeDAO
 	public int add(Employee employee) throws SQLException
 	{
 		int result = 0;
+		
 		Connection conn = dataSource.getConnection();
 		
+		String sql = "INSERT INTO EMPLOYEE(EMPLOYEEID, NAME, SSN1, SSN2, BIRTHDAY, LUNAR, TELEPHONE"
+				+ ", DEPARTMENTID, POSITIONID, REGIONID, BASICPAY, EXTRAPAY)"
+				+ " VALUES(EMPLOYEESEQ.NEXTVAL, ?, ?, CRYPTPACK.ENCRYPT(?, ?)"
+				+ ", TO_DATE(?, 'YYYY-MM-DD'), ?, ?, ?, ?, ?, ?, ?)";
 		
-		String sql="INSERT INTO EMPLOYEE"
-				+ "(EMPLOYEEID, NAME, SSN"
-				+ ", BIRTHDAY, LUNAR, TELEPHONE"
-				+ ", DEPARTMENTID, POSITIONID"
-				+ ", REGIONID, BASICPAY, EXTRAPAY)"
-				+ " VALUES(EMPLOYEESEQ.NEXTVAL"
-				+ ", ?, CRYPTPACK.ENCRYPT(?,?)"
-				+ ", TO_DATE(?, 'YYYY-MM-DD')"
-				+ ", ?, ?, ?, ?, ?, ?, ?)";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
+				
 		pstmt.setString(1, employee.getName());
 		pstmt.setString(2, employee.getSsn1());
 		pstmt.setString(3, employee.getSsn2());
@@ -221,13 +214,16 @@ public class EmployeeDAO implements IEmployeeDAO
 		pstmt.setString(5, employee.getBirthday());
 		pstmt.setInt(6, employee.getLunar());
 		pstmt.setString(7, employee.getTelephone());
-		pstmt.setString(8, employee.getDepartmentId());
-		pstmt.setString(9, employee.getPositionId());
-		pstmt.setString(10, employee.getRegionId());
+		pstmt.setInt(8, Integer.parseInt(employee.getDepartmentId()));
+		pstmt.setInt(9, Integer.parseInt(employee.getPositionId()));
+		pstmt.setInt(10, Integer.parseInt(employee.getRegionId()));
 		pstmt.setInt(11, employee.getBasicPay());
 		pstmt.setInt(12, employee.getExtraPay());
 		
-		result =pstmt.executeUpdate();
+		result = pstmt.executeUpdate();
+		
+		pstmt.close();
+		conn.close();
 		
 		return result;
 	}
@@ -294,9 +290,15 @@ public class EmployeeDAO implements IEmployeeDAO
 		Employee result = new Employee();
 		
 		Connection conn = dataSource.getConnection();
-		String sql= "SELEC" + 
-				"FROM EMPLOYEE" + 
-				"WHERE EMPLOYEEID= ?";
+		String sql= "SELECT EMPLOYEEID"
+				+ ",NAME,BIRTHDAY"
+				+ ",LUNAR,TELEPHONE"
+				+ ",DEPARTMENTID"
+				+ ",POSITIONID"
+				+ ",REGIONID,BASICPAY"
+				+ ",EXTRAPAY,SSN1"
+				+ " FROM EMPLOYEE"
+				+ " WHERE EMPLOYEEID =?";
 		
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		
@@ -306,11 +308,9 @@ public class EmployeeDAO implements IEmployeeDAO
 		
 		if(rs.next())
 		{
-			
 			result.setEmployeeId(rs.getString("EMPLOYEEID"));
 			result.setName(rs.getString("NAME"));
-			result.setSsn(rs.getString("SSN1"));
-			result.setSsn(rs.getString("SSN2"));
+			result.setSsn1(rs.getString("SSN1"));
 			result.setBirthday(rs.getString("BIRTHDAY"));
 			result.setLunar(rs.getInt("LUNAR"));
 			result.setTelephone(rs.getString("TELEPHONE"));
@@ -319,8 +319,6 @@ public class EmployeeDAO implements IEmployeeDAO
 			result.setRegionId(rs.getString("REGIONID"));
 			result.setBasicPay(rs.getInt("BASICPAY"));
 			result.setExtraPay(rs.getInt("EXTRAPAY"));
-			result.setPay(rs.getInt("PAY"));
-			result.setGrade(rs.getInt("GRADE"));
 		}
 		
 		

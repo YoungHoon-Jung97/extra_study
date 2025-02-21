@@ -27,21 +27,59 @@
 	
 
 	
-	<!-- Test 등록 -->
-	<bean id ="EmployeeDAO" class="com.test.mvc.PositionDAO">
+	
+	<!-- EmployeeDAO 등록 -->
+	<bean id ="EmployeeDAO" class="com.test.mvc.EmployeeDAO">
 		<property name="dataSource">
 			<ref bean="localDataSource"/>
 		</property>
 	</bean>
 	
+	<!-- RegionDAO 등록 -->
+	<bean id="RegionDAO" class="com.test.mvc.RegionDAO">
+		<property name="dataSource">
+			<ref bean="localDataSource"/>
+		</property>
+	</bean>
+	
+	<!-- DepartmentDAO 등록 -->
+	<bean id="DepartmentDAO" class="com.test.mvc.DepartmentDAO">
+		<property name="dataSource">
+			<ref bean="localDataSource"/>
+		</property>
+	</bean>
+	
+	<!-- PositionDAO 등록 -->
+	<bean id="PositionDAO" class="com.test.mvc.PositionDAO">
+		<property name="dataSource">
+			<ref bean="localDataSource"/>
+		</property>
+	</bean>
 
-	<!-- Test 등록 -->
-	<bean name="/employee.action" class="com.test.mvc.EmployeeController">
+	<!-- Emlpoyee 등록 -->
+	<bean name="/employeelist.action" class="com.test.mvc.EmployeeListController">
 		<property name="dao">
 			<ref bean="EmployeeDAO"/>
 		</property>
 	</bean>
-
 	
+	<bean name="/employeeinsertform.action" class="com.test.mvc.EmployeeInsertFormController">
+		<property name="dao" ref="EmployeeDAO"></property>
+	</bean>
 	
+	<bean name="/ajax.action" class="com.test.mvc.AjaxController">
+		<property name="dao" ref="EmployeeDAO"></property>
+	</bean>
+	
+	<bean name="/employeeinsert.action" class="com.test.mvc.EmployeeInsertController">
+		<property name="dao" ref="EmployeeDAO"></property>
+	</bean>
+	
+	<bean name="/employeeupdateform.action" class="com.test.mvc.EmployeeUpdateFormController">
+		<property name="employeeDao" ref="EmployeeDAO"></property>
+		<property name="positionDao" ref="PositionDAO"></property>
+		<property name="regionDao" ref="RegionDAO"></property>
+		<property name="departmentDao" ref="DepartmentDAO"></property>
+	</bean>
+	 
 </beans>

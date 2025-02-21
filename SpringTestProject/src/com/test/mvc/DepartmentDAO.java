@@ -38,7 +38,7 @@ public class DepartmentDAO implements IDepartmentDAO
 			
 			Statement stmt = conn.createStatement();
 			
-			String sql="SELECT DEPARTMENTID, DEPARTMENTNAMEFROM DEPARTMENT";
+			String sql="SELECT DEPARTMENTID, DEPARTMENTNAME FROM DEPARTMENT";
 			
 			ResultSet rs = stmt.executeQuery(sql);
 			
