@@ -45,11 +45,41 @@ public class GradeController
 	public String gradeSearch(GradeDTO grade) 
 	{
 		String result = null;
+		IGradeDAO dao = sqlSession.getMapper(IGradeDAO.class);
+		dao.modify(grade);
 		
 		
-		
-		result="redirect:GradeList.jsp";
+		result="redirect:gradelist.action";
 		return result;
+	}
+	
+	@RequestMapping(value ="/gradeinsertform.action" , method = RequestMethod.GET)
+	public String gradeInsertForm(String sid,Model model) 
+	{
+		
+		model.addAttribute("sid",sid);
+		
+		return "/WEB-INF/view/GradeInsertForm.jsp";
+	}
+	
+	@RequestMapping(value ="/gradeinsert.action" , method = RequestMethod.POST)
+	public String gradeInsert(GradeDTO grade) 
+	{
+		
+		IGradeDAO dao = sqlSession.getMapper(IGradeDAO.class);
+		dao.add(grade);
+		
+		return "redirect:gradelist.action";
+	}
+	
+	@RequestMapping(value ="/gradedelete.action" , method = RequestMethod.GET)
+	public String gradeDelete(String sid) 
+	{
+		
+		IGradeDAO dao = sqlSession.getMapper(IGradeDAO.class);
+		dao.remove(sid);
+		
+		return "redirect:gradelist.action";
 	}
 	
 }

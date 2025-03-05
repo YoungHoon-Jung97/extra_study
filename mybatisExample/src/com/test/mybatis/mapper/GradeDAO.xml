@@ -19,4 +19,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM GRADEVIEW
 		WHERE SID= #{sid}
 	</select>
+	
+	<update id="modify">
+		UPDATE TBL_GRADE
+		SET SUB1= #{sub1}, SUB2 = #{sub2}, SUB3= #{sub3}
+		WHERE SID = #{sid}
+	</update>
+	
+	<insert id="add">
+		INSERT INTO TBL_GRADE (SID,SUB1,SUB2,SUB3) VALUES(#{sid},#{sub1},#{sub2},#{sub3})
+	</insert>
+	
+	<delete id="remove">
+		DELETE
+		FROM TBL_GRADE
+		WHERE SID=#{sid}
+	</delete>
 </mapper>

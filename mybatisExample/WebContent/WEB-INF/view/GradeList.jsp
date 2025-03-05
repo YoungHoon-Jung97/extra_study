@@ -129,14 +129,33 @@
 							<td>${grade.sub3}</td>
 							<td>${grade.tot}</td>
 							<td>${grade.avg}</td>
-							<td>${grade.ch}</td>
 							
-
+							<c:choose>
+								<c:when test="${grade.ch =='확인필요' }">
+									<td style="font-size: x-large; color: black">${grade.ch}</td>
+								</c:when>
+								<c:when test="${grade.ch == '합격' }">
+									<td style="font-size: x-large; color: blue;">${grade.ch}</td>
+								</c:when>
+								<c:otherwise>
+									<td style="font-size: x-large; color: red">${grade.ch}</td>
+								</c:otherwise>
+							</c:choose>
+						
 							
-							<td>
-								<button type="button" class="btn btn-success" value="${grade.sid}">수정</button>
-								<button type="button" class="btn btn-danger" value="${grade.sid}">삭제</button>
-							</td>
+							<c:choose>
+								<c:when test="${grade.ch=='확인필요' }">
+									<td colspan="2">
+										<a href="gradeinsertform.action?sid=${grade.sid}" class="btn btn-success">점수 추가</a>
+									</td>
+								</c:when>
+								<c:otherwise>
+									<td>
+										<button type="button" class="btn btn-success" value="${grade.sid}">수정</button>
+										<button type="button" class="btn btn-danger" value="${grade.sid}">삭제</button>
+									</td>
+								</c:otherwise>
+							</c:choose>
 						</tr>
 						</c:forEach>
 					</tbody>

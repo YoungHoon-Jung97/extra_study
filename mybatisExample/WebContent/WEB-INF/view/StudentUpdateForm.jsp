@@ -32,8 +32,8 @@
 	        if (sid =="" || name == "" )
 	        {
 	        	$("#errMsg").css("display", "inline");
+		        return;
 	        }
-	        return;
 	    	
 	        
 	        $("#myForm").submit(); 
@@ -110,7 +110,7 @@
 										번호 <sup style="color:red;">※</sup>
 									</span>
 									<input type="text" id="sid" name="sid" class="form-control"
-									placeholder="sid" maxlength="30" required="required"
+									placeholder="sid" maxlength="30" readonly="readonly"
 									value="${student.sid }"/>
 									<span class="input-group-addon">30자 이내</span>
 								</div>

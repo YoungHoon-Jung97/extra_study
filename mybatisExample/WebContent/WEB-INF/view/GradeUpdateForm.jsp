@@ -22,27 +22,27 @@
 
 
 <script type="text/javascript">
-	
 	$(function(){
 	    $(".btn-success").click(function(){
-	        var sub1 = $("#sub1").val();
-	        var sub2 = $("#sub2").val();
-	        var sub3 = $("#sub3").val();
-	        
-	        if (sub1 =="" || sub2 == "" ||sub3=="")
-	        {
-	        	$("#errMsg").css("display", "inline");
-	        }
-	        return;
-	    	
-	        
-	        $("#myForm").submit(); 
-	    
-	    
-	    });
+	    	var sub1 = Number($("#sub1").val());
+	        var sub2 = Number($("#sub2").val());
+	        var sub3 = Number($("#sub3").val());
 	
+	        // 숫자가 아닌 경우 (NaN) 방지
+	        if (isNaN(sub1) || isNaN(sub2) || isNaN(sub3)) {
+	            $("#errMsg").text("올바른 숫자를 입력하세요.").css("display", "inline");
+	            return;
+	        }
+	
+	        // 점수 범위 검증
+	        if (sub1 > 100 || sub1 < 0 || sub2 > 100 || sub2 < 0 || sub3 < 0 || sub3 > 100) {
+	            $("#errMsg").text("점수는 0~100 사이여야 합니다.").css("display", "inline");
+	            return;
+	        }
+	
+	        $("#myForm").submit();
+	    });
 	});
- 
 
 </script>
 
@@ -112,7 +112,7 @@
 									<input type="text" id="sid" name="sid" class="form-control"
 									placeholder="sid" maxlength="30" readonly="readonly"
 									value="${grade.sid }"/>
-									<span class="input-group-addon">30자 이내</span>
+									<span class="input-group-addon">수정 불가</span>
 								</div>
 							</td>
 						</tr>
@@ -128,7 +128,7 @@
 	                           <input type="text" id="name" name="name" class="form-control"
 	                           placeholder="name" maxlength="30" readonly="readonly"
 	                           value="${grade.name }"/>
-	                           <span class="input-group-addon">30자 이내</span>
+	                           <span class="input-group-addon">수정 불가</span>
 	                        </div>
 	                     </td>                  
 	                  </tr>
@@ -141,10 +141,10 @@
 									<span class="input-group-addon" id="basic-addon3">
 										국어 점수
 									</span>
-									<input type="text" id="sub1" name="sub1" class="form-control"
+									<input type="number" id="sub1" name="sub1" class="form-control"
 									placeholder="sub1" maxlength="40"
-									value="${grade.sub1 }"/>
-									<span class="input-group-addon">숫자</span>
+									value="${grade.sub1 }" min="0" max="100"/>
+									<span class="input-group-addon"> 0~100 점 </span>
 									
 								</div>
 							</td>
@@ -158,10 +158,10 @@
 									<span class="input-group-addon" id="basic-addon3">
 										수학 점수
 									</span>
-									<input type="text" id="sub2" name="sub2" class="form-control"
+									<input type="number" id="sub2" name="sub2" class="form-control"
 									placeholder="sub2" maxlength="40"
-									value="${grade.sub2 }"/>
-									<span class="input-group-addon">숫자</span>
+									value="${grade.sub2 }" min="0" max="100"/>
+									<span class="input-group-addon"> 0~100 점 </span>
 									
 								</div>
 							</td>
@@ -174,10 +174,10 @@
 									<span class="input-group-addon" id="basic-addon3">
 										영어 점수
 									</span>
-									<input type="text" id="sub3" name="sub3" class="form-control"
+									<input type="number" id="sub3" name="sub3" class="form-control"
 									placeholder="sub3" maxlength="40"
-									value="${grade.sub3 }"/>
-									<span class="input-group-addon">숫자</span>
+									value="${grade.sub3 }" min="0" max="100"/>
+									<span class="input-group-addon"> 0~100 점 </span>
 									
 								</div>
 							</td>
@@ -193,7 +193,7 @@
 								<br />
 								<span style="font-size: small;">(※)는 필수입력 항목 입니다.</span>
 								<span id="errMsg" style="font-size: small;color: red; display: none;" >
-									필수 입력 항목을 모두 입력하세요
+									올바른 점수를 입력하세요.
 								</span>
 								
 							</td>

@@ -8,4 +8,6 @@ public interface IGradeDAO
 	public int add(GradeDTO g);
 	public int count();
 	public GradeDTO search(String sid);
+	public int modify(GradeDTO g);
+	public int remove(String sid);
 }

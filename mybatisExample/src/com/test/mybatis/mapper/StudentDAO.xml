@@ -56,7 +56,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<update id="modify">
 		UPDATE TBL_STUDENT
-		SET NAME = #{name}
+		SET NAME = #{name}, TEL=#{tel}
 		WHERE SID= #{sid}
 	</update>
 	

@@ -24,8 +24,28 @@
 
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+	
+	$(function(){
+		
 
-
+		
+		$(".btn-success").click(function(){
+		
+			$(location).attr("href","studentupdateform.action?sid="+$(this).val());
+		});
+		
+		$(".btn-danger").click(function(){
+			
+			if (confirm("정말 삭제 하시겠습니까?"))
+			{
+				$(location).attr("href","studentdelete.action?sid="+$(this).val());
+			}
+		});
+		
+	});
+	
+</script>
 </head>
 <body>
 
@@ -72,11 +92,11 @@
 			
 			<div class="panel-heading row">
 				<span style="font-size: 17pt; font-weight: bold; " class="col-md-3">
-					학생 성적 리스트 출력
+					학생 리스트 출력
 				</span>
 				<span class="col-md-9">
 					<a href="studentinsertform.action" role="button" class="btn btn-success btn-xs"
-					id="btnAdd" style="vertical-align: bottom;">학생 성적 추가</a>
+					id="btnAdd" style="vertical-align: bottom;">학생 정보 추가</a>
 				</span>
 			</div>
 			
