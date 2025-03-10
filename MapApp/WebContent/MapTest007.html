@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>MapTest007.html</title>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey="></script>
+
+<script type="text/javascript">
+
+	function initialize(){
+		
+		container = document.getElementById("map");
+		options={
+			center: new kakao.maps.LatLng(37.556526, 126.919525)
+			,level :3
+				
+		};
+		
+		map = new kakao.maps.Map(container, options);
+		
+		//지도 타입 컨트롤 (지도 or 스카이뷰) 생성
+		mapTypeControl = new kakao.maps.MapTypeControl();
+		
+		//※ 지도 타입에 대한 컨트롤을 생성만 하면 되는 것이 아니라
+		//	생성된 해당 컨트롤을 추가 해야 지도 위에 표시된다.
+		
+		//지도 타입 커트롤을 위에 추가
+		map.addControl(mapTypeControl, kakao.maps.ControlPosition.LEFT);
+		//[TOP] :위 가운데를 의미한다. 아래로 쌓인다.
+		//[TOPLEFT] : 왼쪽 위를 의미한다. 오른쪽으로 쌓인다.
+		//[TOPRIGHT] : 오른쪽 위를 의미한다. 왼쪽으로 쌓인다.
+		//[LEFT] : 왼쪽 위를 의미한다. 아래로 쌓인다.
+		
+		//줌 컨트롤(확대 축소 제어 컨트롤 )생성
+		zoomControl = new kakao.maps.ZoomControl();
+		
+		//줌 컨트롤을 지도 위에 추가
+		map.addControl(zoomControl, kakao.maps.ControlPosition.LEFT);
+	}
+</script>
+
+</head>
+<body onload="initialize()">
+
+
+	<!-- ○ 지도의 중심 좌표 -->
+	<!-- 37.556526, 126.919525 -->
+	
+	<!-- ○ 서울 타워  -->
+	<!-- 37.551412, 126.987466 -->
+
+	<!-- ○ 메가박스 홍대  -->
+	<!-- 37.555946, 126.922019 -->
+	
+	<!-- ○ 롯데타워  -->
+	<!-- 37.512456, 127.102489  -->
+	
+	<!-- ○ 국회의사당   -->
+	<!-- 37.531796, 126.914262 -->
+
+
+<div>
+	<h1>Kakao Map 기본 컨트롤 구성</h1>
+	<hr />
+</div>
+
+<!--지도를 그릴 div  -->
+<div id ="map" style="width: 50%; height: 400px;" ></div>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>MapTest005.html</title>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey="></script>
+<script type="text/javascript">
+
+	//페이지 요청 시 호출
+	function initialize(){
+		
+		container = document.getElementById("map");
+		
+		options = {
+				center : new kakao.maps.LatLng(37.556526, 126.919525)
+				,level : 3
+				
+		}; 
+		
+		map = new kakao.maps.Map(container, options);
+	}
+	
+	//지도 레벨 
+	function displayLevel(){
+		//alert("지도 레벨 확인 함수 호출");
+		
+		var levelEl = document.getElementById("mapLevel");
+		
+		//map.getLevel()
+		levelEl.innerHTML = "현재 지도의 레벨은 " + map.getLevel() + " 레벨 입니다.";
+		
+	}
+	// ※ 지도의 레벨은 지도의 확대 축소 수준을 의미한다.
+	//	  지도의 레벨(1~14)은 숫자가 작을 수록 지도의 확대 수준이 높다.
+
+	function zoomIn(){
+		
+		//현재의 지도 레벨 얻어오기
+		var level = map.getLevel();
+		
+		//얻어돈 지도의 현재 레벨에서 1내리기(→ 지도 확대)
+		map.setLevel(level - 1);
+		
+		//갱신된 내용으로 지도 레벨 확인
+		displayLevel();
+	}
+	
+	function zoomOut(){
+		
+		//현재의 지도레벨 가져오기
+		var level = map.getLevel();
+		
+		//얻어온 지도의 현재 레벨에서 1올리기(→ 지도 축소)
+		map.setLevel(level + 1);
+		
+		//갱신된 내용이로 지도 레벨 확인
+		displayLevel();
+	}
+</script>
+</head>
+<body onload="initialize()">
+
+
+
+	<!-- ○ 지도의 중심 좌표 -->
+	<!-- 37.556526, 126.919525 -->
+	
+	<!-- ○ 서울 타워  -->
+	<!-- 37.551412, 126.987466 -->
+
+	<!-- ○ 메가박스 홍대  -->
+	<!-- 37.555946, 126.922019 -->
+	
+	<!-- ○ 롯데타워  -->
+	<!-- 37.512456, 127.102489  -->
+	
+	<!-- ○ 국회의사당   -->
+	<!-- 37.531796, 126.914262 -->
+
+<div>
+	<h1>Kakao Map 레벨 전환</h1>
+	<hr />
+</div>
+
+<!-- 지도를 그려낼 div 공간 확보(지정)  -->
+<div id ="map" style="width: 50%; height: 400px;" ></div>
+<br />
+
+<!-- 지도의 레벨 출력 -->
+<div id ="mapLevel"></div>
+<br />
+
+<p>
+	<button type="button" class="btn" onclick="zoomIn()" >지도 레벨 -1 (낮추기,확대)</button>
+	<button type="button" class="btn" onclick="zoomOut()" >지도 레벨 +1 (키우기,축소)</button>
+</p>
+
+</body>
+</html>

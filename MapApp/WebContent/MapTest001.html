@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>MapTest001.HTML</title>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+
+
+
+
+<div>
+	<h1>Kakao Map 생성 기본 관찰</h1>
+	<p>지도 생성및 기본 내용 관찰</p>
+	<hr />
+</div>
+
+<!--지도를 랜더링할 div 공간 확보(지정)  -->
+<div id="map" style="width: 100% ;height: 400px;"></div>
+
+<!-- <script type="text/javascript" src="//dapi.kakao.com/v2/map2/sdk.js?appkey=발급받은 App Key 사용"></script> -->
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey="></script>
+
+<script type="text/javascript">
+	var mapContainer = document.getElementById("map");				//-- 지도를 표시할 div
+	
+	var mapOption = 
+		{
+			center: new daum.maps.LatLng(37.556570, 126.919544)		//-- 지도의 중심 좌표(풍성 빌딩)
+			, level: 3 													//-- 지도의 확대 축소 레벨
+			
+		};
+	//지도를 표리살 div와 지도 옵션을 활용하여 지도 생성
+	/* var map = new daum.maps.Map(); */
+	var map = new daum.maps.Map(mapContainer, mapOption); 
+	
+</script>
+</body>
+</html>

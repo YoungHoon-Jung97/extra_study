@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey="></script>
+
+<script type="text/javascript">
+	
+	function initialize(){
+		
+		container = document.getElementById("map");
+		options ={
+				center: new kakao.maps.LatLng(37.556526, 126.919525)
+				,level : 3
+				
+		};
+		map = new kakao.maps.Map(container, options);
+		
+	}
+	
+	
+	//중심좌표 이동 버튼 클릭 시 호출
+	function setCenter(){
+		//테스트
+		//alert("버튼 클릭");
+		
+		//중심을 이동할 위도 경도 위치 생성(서울 타워)
+		var moveLatLng = new kakao.maps.LatLng(37.551412, 126.987466);	
+		
+		//지도 중심 이동
+		map.setCenter(moveLatLng);
+		
+		//--==>>
+		/*
+		map.setCenter(new kakao.maps.LatLng(37.556526, 126.919525))	
+		*/
+		
+		
+	}
+	//중심좌표 부드럽게 이동1 버튼 클릭 시 호출
+	function panTo1(){
+		//중심을 이동할 위도 경도 위치 생성()
+		var moveLatLng = new kakao.maps.LatLng(37.555946, 126.922019);
+		
+		//지도 중심을 부드럽게 이동
+		//-- 지도의 중심을 이동하는 과정에서 이동할 지점이 현재 지도에서 표현되는 범위 밖에 있다면
+		// 즉, 이동거리가 지도 하면보다 그다면 브르러운 효과 없이 이동하게 된다.
+		map.panTo(moveLatLng);
+	}
+	
+	//중심좌표 부드럽게 이동2 버튼 클릭 시 호출
+	function panTo2()
+	{
+		var moveLatLng = new kakao.maps.LatLng(37.512456, 127.102489);
+		
+		map.panTo(moveLatLng);
+		
+	}
+	
+	//중심좌표 부드럽게 이동3 버튼 클릭 시 호출
+	function panTo3()
+	{
+		var moveLatLng = new kakao.maps.LatLng(37.531805, 126.914155);
+		
+		map.panTo(moveLatLng);
+		
+	}
+	
+	//처음 위치로 버틀 클릭 시
+	function panTo4(){
+		var moveLatLng = new kakao.maps.LatLng(37.556526, 126.919525);	
+		
+		//지도 중심 이동
+		map.panTo(moveLatLng);
+
+		
+	}
+	
+</script>
+
+
+</head>
+<body onload="initialize()">
+
+
+
+
+	<!-- ○ 지도의 중심 좌표 -->
+	<!-- 37.556526, 126.919525 -->
+	
+	<!-- ○ 서울 타워  -->
+	<!-- 37.551412, 126.987466 -->
+
+	<!-- ○ 메가박스 홍대  -->
+	<!-- 37.555946, 126.922019 -->
+	
+	<!-- ○ 롯데타워  -->
+	<!-- 37.512456, 127.102489  -->
+	
+	<!-- ○ 국회의사당   -->
+	<!-- 37.531796, 126.914262 -->
+	<div>
+		<h1>Kakao Map 중심 좌펴 이동</h1>
+		<ul>
+			<li>지도 객체의 메소드를 통해 지도를 원하는 좌표로 이동시키는 것이 가능하다.</li>
+			<li>표시되고 있는 영역을 벗어나지 않는 거리에서는 애니메이션 효과처럼 지도를 부드럽게 이동시킬수 있다.</li>
+		</ul>
+		<hr />
+	</div>
+
+
+	<!--지도를 랜더링할 div 공간 확보(지정)  -->
+	<div id="map" style="width: 100%; height: 400px;"></div>
+
+	<p>
+		<button type="button" class = "btn" onclick="setCenter()">중심좌표 이동</button>
+		<button type ="button" class=btn" onclick="panTo1()">중심좌표 부드럽게 이동1</button>
+		<button type ="button" class=btn" onclick="panTo2()">중심좌표 부드럽게 이동2</button>
+		<button type ="button" class=btn" onclick="panTo3()">중심좌표 부드럽게 이동3</button>
+		<button type ="button" class=btn" onclick="panTo4()">처음 위치로</button>
+	</p>
+
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>MapTest006.html</title>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<script type="text/javascript"
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey="></script>
+<style>
+.map-container {
+	display: flex; /* 가로 정렬 */
+	justify-content: center; /* 가운데 정렬 */
+	gap: 20px; /* 지도 사이 간격 */
+}
+
+.map {
+	width: 40%;
+	height: 600px;
+}
+</style>
+<script type="text/javascript">
+	function initialize()
+	{
+		container1 = document.getElementById("map1");
+		container2 = document.getElementById("map2");
+
+		options1 =
+		{
+			center : new kakao.maps.LatLng(37.556526, 126.919525),
+			level : 3
+		};
+
+		options2 =
+		{
+			center : new kakao.maps.LatLng(37.512456, 127.102489),
+			level : 3
+		};
+
+		map1 = new kakao.maps.Map(container1, options1);
+		map2 = new kakao.maps.Map(container2, options2);
+
+		// 지도 타입 컨트롤 생성 및 추가
+		mapTypeControl = new kakao.maps.MapTypeControl();
+		map1.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
+	}
+
+	function getInfo()
+	{
+		var center = map1.getCenter();
+		var level = map1.getLevel();
+		var mapTypeId = map1.getMapTypeId();
+		var bounds = map1.getBounds();
+		var swLatLng = bounds.getSouthWest();
+		var neLatLng = bounds.getNorthEast();
+
+		var message = "지도 중심 좌표는 " + center + " 입니다.<br>";
+		message += "위도: " + center.getLat() + ", 경도: " + center.getLng()
+				+ "<br>";
+		message += "지도 레벨: " + level + "<br>";
+		message += "지도 타입: " + mapTypeId + "<br>";
+		message += "지도의 현재 영역: " + bounds + "<br>";
+		message += "남서쪽 좌표: " + swLatLng.getLat() + ", " + swLatLng.getLng()
+				+ "<br>";
+		message += "북동쪽 좌표: " + neLatLng.getLat() + ", " + neLatLng.getLng()
+				+ "<br>";
+
+		document.getElementById("mapType1").innerHTML = message;
+	}
+</script>
+
+</head>
+<body onload="initialize()">
+
+	<div>
+		<h1>Kakao Map 지도 정보 얻어내기</h1>
+		<hr />
+	</div>
+
+	<!-- 지도 컨테이너 추가 -->
+	<div class="map-container">
+		<div>
+			<div id="map1" class="map"></div>
+			<p>
+				<button type="button" class="btn" onclick="getInfo()">지도 정보
+					확인</button>
+				<br /> <br /> 
+				<span id="mapType1"></span>
+			</p>
+		</div>
+		<div>
+
+			<div id="map2" class="map"></div>
+			<p>
+				<button type="button" class="btn" onclick="getInfo()">지도 정보
+					확인</button>
+				<br /> <br /> 
+				<span id="mapType2"></span>
+			</p>
+
+		</div>
+	</div>
+
+	<br />
+
+
+
+</body>
+</html>
