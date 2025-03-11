@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>MapTest012.html</title>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cf4b48590fbb159777279a2a80638bb2"></script>
+
+<script type="text/javascript">
+
+	function initialize(){
+		
+		container = document.getElementById("map");
+		options={
+			center: new kakao.maps.LatLng(37.556526, 126.919525),
+			level:3
+				
+		};
+		
+		map = new kakao.maps.Map(container, options);
+		
+		//지도 내부에 표시할 마커 구성 (생성)
+		//marker = new kakao.maps.Marker({마커 구성 속성들});
+		marker = new kakao.maps.Marker({
+			
+			//지도 중심 좌표 (37.556526, 126.919525) 에
+			//마커가 생성될 수 있도록 구성
+			//→ position
+			position: map.getCenter()
+			
+		});
+		
+		//지도에 미커 표시를 포함 → 마커의입장에서 지도를 지정
+		marker.setMap(map);
+		clickAction();
+		
+	}
+	
+	function clickAction()
+	{
+		kakao.maps.event.addListener(map, "click", function(mouseEvent){
+			
+			var latLng = mouseEvent.latLng;
+			
+			//기존 생성된 마커의 위치를 클릭한 지점으로 이동
+			marker.setPosition(latLng);
+			
+			var result = document.getElementById("result");
+			var lat = latLng.getLat();
+			var lng = latLng.getLng();
+			result.innerHTML= "클릭한 지점의 위도는 " + lat + " 이고, <br> 경도는 " + lng + " 입니다.<br>";
+			
+		});
+		
+	}
+</script>
+
+</head>
+<body onload="initialize()">
+
+	<!-- ○ 지도의 중심 좌표 -->
+	<!-- 37.556526, 126.919525 -->
+
+
+<div>
+	<h1>Kakao Map 마우스 클릭 이벤트 등록</h1>
+	<hr />
+</div>
+
+<div id="map" style="width: 100%; height: 400px;"></div>
+
+<p>
+	지도 클릭한 내용
+</p>
+<div id="result"></div>
+
+
+</body>
+</html>

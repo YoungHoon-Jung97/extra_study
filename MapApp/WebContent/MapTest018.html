@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cf4b48590fbb159777279a2a80638bb2"></script>
+<script type="text/javascript">
+
+	function initialize(){
+		container = document.getElementById("map");
+		
+		mapCenter = new kakao.maps.LatLng(37.5568250024367 ,126.92000760403246);
+		options={
+				
+			center : new kakao.maps.LatLng(37.556526, 126.919525),
+			level : 3
+		};
+		
+		map = new kakao.maps.Map(container, options);
+		
+		
+		//마커 옵션 구성 → 스타벅스
+		
+		
+		//마커 생성
+		
+		// 생성된 마커가 지도에 표시될 수 있도록 설정
+		
+		
+		imageSrc = "images/ward_ping.jpg";
+		imageSize = new kakao.maps.Size(54,59);
+		//--마커 이미지 크기
+		imageOption = {offset:new kakao.maps.Point(27,69)};
+		//--이미지에 대한 옵션
+		// 마커 좌표와 일치시킬 이미지 안에서의 좌표 설정
+		
+		//구성한 마커 속성을 활용한 마커 이미지 생성
+		markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
+		
+		//마커 생성
+		marker = new kakao.maps.Marker({
+			
+			position : mapCenter,
+			image: markerImage
+		});
+		
+		marker.setMap(map);
+		
+		var iwContent = "<div style='padding:5px'>";
+		iwContent += "스타벅스<br>";
+		iwContent += "<a href='http://map.kakao.com/link/map/";
+		iwContent += "스타벅스,37.5568250024367,126.92000760403246' style='color:blue;' target='_blank'>큰지도 보기</a><br>"; // ✅ 줄바꿈 추가
+		iwContent += "<a href='http://map.kakao.com/link/to/";
+		iwContent += "스타벅스,37.5568250024367,126.92000760403246' style='color:blue;' target='_blank'>길찾기</a>";
+		iwContent += "</div>";
+
+		
+		//인포원도우 생성
+		infowindow = new kakao.maps.InfoWindow({
+			position:marker.getPosition()
+			,content: iwContent
+			
+		});
+		
+		//생성된 인포윈도우가 마커에 표시되도록 설정
+		infowindow.open(map, marker);
+		//-- open()함수를 호출하는 과정에서
+		//	두번째 파라미터를 생략하여 설정하지 않을 경우
+		//	마커 없이 지도 위에 직접 표시
+		
+	}
+	
+	
+</script>
+
+</head>
+<body onload="initialize()">
+
+	<!-- ○ 지도의 중심 좌표 -->
+	<!-- 37.556526, 126.919525 -->
+	
+	<!-- ○ 길 건너 스타벅스 -->
+	<!-- 37.5568250024367 126.92000760403246  -->
+	
+	
+<div>
+	<h1>Kakao Map 형태가 다른 마커 생성</h1>
+	<hr />
+</div>
+<div id="map" style="width: 100%; height: 400px;"></div>
+<br />
+
+<p>
+	<button type="button" class="btn" onclick="removeMarker()"> 마커 제거 </button>
+	<button type="button" class="btn" onclick="createMarker()"> 마커 생성 </button>
+</p>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Click to Add Multiple Markers</title>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cf4b48590fbb159777279a2a80638bb2"></script>
+    <script type="text/javascript">
+        var map;
+        var markers = []; // ✅ 생성된 마커를 저장할 배열
+
+        function initialize() {
+            var container = document.getElementById("map");
+            var options = {
+                center: new kakao.maps.LatLng(37.556526, 126.919525), // 지도 중심
+                level: 3
+            };
+
+            map = new kakao.maps.Map(container, options);
+
+            // ✅ 지도 클릭 이벤트 추가 (클릭할 때마다 마커 생성)
+            kakao.maps.event.addListener(map, "click", function(mouseEvent) {
+                var latLng = mouseEvent.latLng; // 클릭한 위치 좌표
+
+                var imageSrc = "images/Missing In Action.jpg"; // ✅ 마커 이미지 경로
+                var imageSize = new kakao.maps.Size(54, 59);
+                var imageOption = { offset: new kakao.maps.Point(27, 59) };
+                var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption); 
+
+                var marker = new kakao.maps.Marker({
+                    position: latLng,
+                    image: markerImage,
+                    map: map
+                });
+
+                markers.push(marker); // 마커 배열에 저장
+            });
+        }
+
+        // ✅ 모든 마커 제거 기능 추가
+        function removeAllMarkers() {
+            for (var i = 0; i < markers.length; i++) {
+                markers[i].setMap(null);
+            }
+            markers = []; // 배열 초기화
+        }
+
+        window.onload = initialize;
+    </script>
+</head>
+<body>
+    <h1>클릭할 때마다 마커 추가</h1>
+    <button onclick="removeAllMarkers()">모든 마커 제거</button>
+    <div id="map" style="width:100%; height:500px;"></div>
+</body>
+</html>

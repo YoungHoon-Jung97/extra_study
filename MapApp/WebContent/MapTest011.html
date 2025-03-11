@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>MapTest011.html</title>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cf4b48590fbb159777279a2a80638bb2"></script>
+
+<script type="text/javascript">
+
+	function initialize(){
+		
+		container = document.getElementById("map");
+		options={
+				
+			center : new kakao.maps.LatLng(37.556526, 126.919525),
+			level:3
+		};
+		map = new kakao.maps.Map(container, options);
+		
+		//check
+		clickAction();
+	}
+	
+	//지도 영역이 클릭되었을 때 호출(X) → 문서가 로딩 되었을 때 호출
+
+	function clickAction(){
+		
+		//kakao.maps.event.addListener(지도대상, 이벤트, 기능);
+		kakao.maps.event.addListener(map, "click",function(mouseEvent){
+			
+			//alert("확인");
+			
+			//클릭한 (마우스 이벤트가 발생한) 지점의
+			//위도, 경도에 대한 정보 가져오기
+			latLng = mouseEvent.latLng;
+			
+			//alert(latLng);
+			
+			//(37.55641039812986, 126.91979301513008)
+			
+			//클릭한 지점의 위도는 xx
+			//경도는 xx입니다.
+			
+			display();
+			
+			
+			//alert(lat);
+			
+			
+		});
+		
+	}
+	
+	function display(){
+		
+		var result = document.getElementById("result");
+		var lat = latLng.getLat();
+		var lng = latLng.getLng();
+		result.innerHTML= "클릭한 지점의 위도는 " + lat + " 이고, <br> 경도는 " + lng + " 입니다.<br>";
+	}
+
+</script>
+
+</head>
+<body onload="initialize()">
+
+	<!-- ○ 지도의 중심 좌표 -->
+	<!-- 37.556526, 126.919525 -->
+
+
+<div>
+	<h1>Kakao Map 마우스 클릭 이벤트 등록</h1>
+	<hr />
+</div>
+
+<div id="map" style="width: 100%; height: 400px;"></div>
+
+<p>
+	지도 클릭한 내용
+</p>
+<div id="result"></div>
+
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>MapTest015.html</title>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cf4b48590fbb159777279a2a80638bb2"></script>
+<script type="text/javascript">
+
+	function initialize(){
+		container  =document.getElementById("map");
+		mapCenter = new kakao.maps.LatLng(37.556526, 126.919525);
+		options={
+			center : mapCenter,
+			level :3
+				
+		};
+		
+		//맵생성
+		map = new kakap.maps.Map(container, options);
+		
+		//마커 생성
+		marker = new kakao.maps.Marker({
+			
+			position:mapCenter
+		});
+		
+		//지도에 마커가 표시될 수 있도록 설정
+		marker.setMap(map);
+		
+		//위에서 생성한 마커가 이동이 가능하도록 속성 전달
+		marker.setDraggable(true);
+		
+	}
+
+</script>
+</head>
+<body onload="initialize()">
+
+	<!-- ○ 지도의 중심 좌표 -->
+	<!-- 37.556526, 126.919525 -->
+	
+	<!-- ○ 길 건너 스타벅스 -->
+	<!-- 37.5568250024367 126.92000760403246  -->
+	
+<div>
+	<h1>Kakao Map 이동 가능한 마커 생성</h1>
+	<hr />
+</div>
+
+<div id="map" style="width: 100%; height: 400px;"></div>
+<br />
+
+</body>
+</html>
