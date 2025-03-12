@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2d417a589628ad5277bf55d04ec71c48"></script>
+<script type="text/javascript">
+
+	function initialize(){
+		container = document.getElementById("map");
+		
+		mapCenter = new kakao.maps.LatLng(37.5568250024367 ,126.92000760403246);
+		options={
+				
+			center : new kakao.maps.LatLng(37.556526, 126.919525),
+			level : 3
+		};
+		
+		map = new kakao.maps.Map(container, options);
+		
+		imageSrc = "images/Missing In Action.jpg";
+		imageSize = new kakao.maps.Size(54,59);
+		//--마커 이미지 크기
+		imageOption = {offset:new kakao.maps.Point(27,69)};
+		//--이미지에 대한 옵션
+		// 마커 좌표와 일치시킬 이미지 안에서의 좌표 설정
+		
+		
+		//구성한 마커 속성을 활용한 마커 이미지 생성
+		markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
+		//다중 마커 객체들을 포함하고 있을 배열
+		
+		markers =[];
+		
+		
+		kakao.maps.event.addListener(map, "click", function(mouseEvent){
+			
+			addMarkers(mouseEvent.latLng);
+			
+		});
+		
+		
+		
+		
+	}
+	
+	function addMarkers(position){
+		
+		
+		//생성한 마커가 지도에 표시될 수 있도록 설정
+		marker = new kakao.maps.Marker({
+			position : position,
+			image: markerImage
+			
+		});
+		
+		marker.setMap(map);
+		//생성된 마커를 markers 배열에 추가
+		markers.push(marker);
+	}
+	
+	
+	function setMarkers(map){
+		
+		for (var i = 0; i < markers.length; i++)
+		{
+			markers[i].setMap(map);
+		}
+	}
+	
+	function visibleMarker(){
+		
+		setMarkers(map);
+	}
+	
+	function unvisibleMarker(){
+		
+		setMarkers(null);
+	}
+	
+</script>
+
+</head>
+<body onload="initialize()">
+
+	<!-- ○ 지도의 중심 좌표 -->
+	<!-- 37.556526, 126.919525 -->
+
+
+<div>
+	<h1>Kakao Map 마우스 클릭 이벤트 등록</h1>
+	<hr />
+</div>
+
+<div id="map" style="width: 100%; height: 400px;"></div>
+
+<p>
+	<button type="button" class="btn" onclick="unvisibleMarker()"> 마커 숨기기 </button>
+	<button type="button" class="btn" onclick="visibleMarker()"> 마커 보이기 </button>
+</p>
+
+</body>
+</html>

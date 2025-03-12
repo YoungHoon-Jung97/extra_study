@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>MapTest022.html</title>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2d417a589628ad5277bf55d04ec71c48"></script>
+<script type="text/javascript">
+
+	function initialize(){
+		container = document.getElementById("map");
+		
+		mapCenter = new kakao.maps.LatLng(37.5568250024367 ,126.92000760403246);
+		options={
+				
+			center : new kakao.maps.LatLng(37.556526, 126.919525),
+			level : 3
+		};
+		
+		map = new kakao.maps.Map(container, options);
+		
+		//로드뷰 지도타입
+		/* map.addOverlayMapTypeId(daum.maps.MapTypeId.ROADVIEW); */
+		
+		
+		
+	}
+	
+	//교통 정보 추가 버튼 클릭 시 호출되는 함수
+	function addRoadViewInfo(){
+		
+		map.addOverlayMapTypeId(kakao.maps.MapTypeId.ROADVIEW);
+		
+		
+	}
+	
+	//교통 정보 제거 버튼 클릭 시 호출되는 함수
+	function removeRoadViewInfo(){
+		map.removeOverlayMapTypeId(kakao.maps.MapTypeId.ROADVIEW);
+		
+	}
+</script>
+
+</head>
+<body onload="initialize()">
+
+	<!-- ○ 지도의 중심 좌표 -->
+	<!-- 37.556526, 126.919525 -->
+
+
+<div>
+	<h1>Kakao Map 로드뷰 표시</h1>
+	<hr />
+</div>
+
+<div id="map" style="width: 100%; height: 400px;"></div>
+
+<p>
+	<button type="button" class="btn" onclick="addRoadViewInfo()"> 로드뷰 추가 </button>
+	<button type="button" class="btn" onclick="removeRoadViewInfo()"> 로드뷰 삭제 </button>
+</p>
+
+</body>
+</html>

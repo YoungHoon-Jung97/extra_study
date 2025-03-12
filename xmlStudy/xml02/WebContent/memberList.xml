@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE memberList[
+<!ELEMENT memberList (memberInfo+)>
+<!ELEMENT memberInfo (name, telephone, curriculumn?, zipCode, addr)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT telephone (#PCDATA)>
+<!ELEMENT curriculumn (sub+)>
+<!ELEMENT sub (#PCDATA)>
+<!ELEMENT zipCode (#PCDATA)>
+<!ELEMENT addr (#PCDATA)>
+<!ATTLIST memberInfo mid CDATA #IMPLIED>
+]>
+	<!-- 루트 엘리먼트는 하나 -->
+	<!-- 루트 엘리먼트의 이름은 『~~~.xml』 파일 이름과 동일한 이름 사용 -->
+	<!-- 복수(다수)의 데이터를 표현하는 경우 중간에 적절한 부모 태그 지정 -->
+	<!-- 엘리먼트 하위에는 엘리먼트(또는 데이터)만 구성 -->
+	<!-- 특수문자가 포함된 데이터인 경우 『CDATA 섹션』으로 처리 -->
+	<!-- 시작 태그와 끝 태그의 이름이 대소문자까지 완벽하게 일치 -->
+	<!-- 모든 태그의 열고 닫는 순서가 정확하게 처리 -->
+	<!-- 속성의 속성값이 『""』로 구성 -->
+	
+	<!--***********************************************************************************-->
+	<!-- PC Data : 여는 태그와 닫는 태그 사이를 PC 데이터(파싱 데이터) 라고 한다. -->
+	<!-- CDATA 섹션 : Parsed Data 를 하지 말고, 문자 그대로 표현하도록 처리를 요청하는 것. -->
+	<!--***********************************************************************************-->
+	
+	<!-- ※ 스스로(본인)의 정보를 표현할 수 있는 문서 작성 -->
+	<!--    (+ 우리 팀원들) -->
+<memberList>
+	<memberInfo mid="1">
+		<name>정영훈</name>
+		<telephone><![CDATA[010-1234-4567]]></telephone>
+		<curriculumn>
+			<sub>JAVA SE</sub>
+			<sub>ORACLE</sub>
+			<sub><![CDATA[Servlet&JSP]]></sub>
+		</curriculumn>
+		<zipCode>01234</zipCode>
+		<addr>서울시 마포구 월드컵북로 150</addr>
+	</memberInfo>
+</memberList>

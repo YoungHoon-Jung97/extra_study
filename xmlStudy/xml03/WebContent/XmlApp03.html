@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<style type="text/css">
+
+	table, th, td {
+		border: 1px solid gray;
+	}
+</style>
+<script type="text/javascript">
+	function loadDoc(){
+		
+		//alert("확인");
+		var xmlHttp = new XMLHttpRequest();
+		xmlHttp.onreadystatechange = function(){
+			
+			if (this.status == 200 && this.readyState==4)
+			{
+				displayData(this);
+			}
+		};
+		
+		xmlHttp.open("GET", "koreanMajorCities.xml","true");
+		xmlHttp.send("");
+
+	}
+	
+	//업무처리 함수 정의
+	function displayData(xmlHttp){
+		
+		var xmlObj = xmlHttp.responseXML;  //--요청한 데이터를 XML DOM  객체로 수신
+		var result = "<table><tr><th>도시 이름</th><th>행정구역</th></tr>";
+		
+		var cityList = xmlObj.getElementsByTagName("city");
+		for (var idx = 0; idx<cityList.length; idx++)
+		{
+			result += "<tr>";
+			result += "<td>";
+			result += cityList[idx].getElementsByTagName("name")[0].childNodes[0].nodeValue
+			result += "</td>";
+			result += "<td>";
+			result += cityList[idx].getElementsByTagName("class")[0].childNodes[0].nodeValue
+			result += "</td>";
+			result += "</tr>";
+		}
+		result += "</table>";
+        document.getElementById("text").innerHTML = result;
+	}
+
+</script>
+</head>
+<body>
+
+<div>
+	<h1>HTML로부터 데이터 분리(관찰)</h1>
+	<hr />
+</div>
+
+<div>
+	<button type="button" class="btn" onclick="loadDoc()">XML 데이터 불러오기</button>
+	<p id="text"></p>
+</div>
+
+</body>
+</html>
