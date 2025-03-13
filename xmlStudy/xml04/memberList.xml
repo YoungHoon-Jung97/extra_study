@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- DTD 추가 -->
+<!DOCTYPE memberList
+[
+<!ELEMENT memberList (memberInfo+)>
+<!ELEMENT memberInfo (name, telephone, curriculumn?, zipCode, addr)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT telephone (#PCDATA)>
+<!ELEMENT curriculumn (sub+)>
+<!ELEMENT sub (#PCDATA)>
+<!ELEMENT zipCode (#PCDATA)>
+<!ELEMENT addr (#PCDATA)>
+<!ATTLIST memberInfo mid CDATA #IMPLIED>
+]>
+
+<!-- #REQUIRED : 이 속성은 반드시 명시되어야 한다. -->
+<!-- #IMPLIED : 이 속성은 명시되기도 하고, 명시되지 않기도 한다. -->
+<!-- #FIXED 특정값 : 이 속성은 특정값으로 고정되어 사용된다. -->
+
+
+<memberList>
+	<memberInfo mid="1">
+		<name>김상기</name>
+		<telephone><![CDATA[010-1213-4546]]></telephone>
+		<curriculumn>
+			<sub>JAVA SE</sub>
+			<sub>ORACLE</sub>
+			<sub><![CDATA[Servlet&JSP]]></sub>
+		</curriculumn>
+		<zipCode>01234</zipCode>
+		<addr>서울시 마포구 월드컵북로 150</addr>
+	</memberInfo>
+	
+	<memberInfo mid="2">
+		<name>김민성</name>
+		<telephone><![CDATA[010-5678-6789]]></telephone>		
+		<zipCode>01234</zipCode>
+		<addr>서울시 마포구 월드컵북로 150</addr>
+	</memberInfo>
+</memberList>
+
+
+
+

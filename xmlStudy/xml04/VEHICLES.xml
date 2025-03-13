@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<VEHICLES>
+	<LAST_INVENTORY_NUMBER>11</LAST_INVENTORY_NUMBER>
+	<VEHICLE>
+		<INVENTORY_NUMBER>1</INVENTORY_NUMBER>
+		<MAKE>Dodge</MAKE>
+		<MODEL>Durango</MODEL>
+		<YEAR>1998</YEAR>
+		<PICTURE>DodgeDurango.jpg</PICTURE>
+		<STYLE>Sport Utility</STYLE>
+		<DOORS>4</DOORS>
+		<PRICE>18000</PRICE>
+		<MILEAGE>32000</MILEAGE>
+		<OPTIONS>
+			<Power_Locks>Yes</Power_Locks>
+			<Power_Window>Yes</Power_Window>
+			<Stereo>Radio/Cassette/CD</Stereo>
+			<Air_Conditioning>Yes</Air_Conditioning>
+			<Automatic>Yes</Automatic>
+			<Four_Wheel_Drive>Full/Partial</Four_Wheel_Drive>
+			<Note>Very clean</Note>
+		</OPTIONS>
+		<OWNER>
+			<NAME>Douglas Briggs </NAME>
+			<EMAIL>DBriggs@aDomain.Com</EMAIL>
+			<PHONE>781 781 7811</PHONE>
+		</OWNER>
+	</VEHICLE>
+	<VEHICLE>
+		<INVENTORY_NUMBER>2</INVENTORY_NUMBER>
+		<MAKE>Honda</MAKE>
+		<MODEL>Civic</MODEL>
+		<YEAR>1997</YEAR>
+		<PICTURE>HondaCivic.jpg</PICTURE>
+		<PRICE_YEN>20000000</PRICE_YEN>
+		<STYLE>Sedan</STYLE>
+		<DOORS>4</DOORS>
+		<PRICE>8000</PRICE>
+		<MILEAGE>56000</MILEAGE>
+		<OPTIONS>
+			<Power_Locks>Yes</Power_Locks>
+			<Power_Window>Yes</Power_Window>
+			<Stereo>Radio/Cassette</Stereo>
+			<Automatic>Yes</Automatic>
+			<Note>Like New</Note>
+		</OPTIONS>
+		<OWNER>
+			<NAME>Israel Hodgson </NAME>
+			<EMAIL>IHodgson@aDomain.Com</EMAIL>
+			<PHONE>781 781 782</PHONE>
+		</OWNER>
+	</VEHICLE>
+	<VEHICLE>
+		<INVENTORY_NUMBER>3</INVENTORY_NUMBER>
+		<MAKE>Dodge</MAKE>
+		<MODEL>Neon</MODEL>
+		<YEAR>1996</YEAR>
+		<PICTURE>DodgeNeon.jpg</PICTURE>
+		<STYLE>Sedan</STYLE>
+		<DOORS>4</DOORS>
+		<PRICE>7000</PRICE>
+		<MILEAGE>55000</MILEAGE>
+		<OPTIONS>
+			<Stereo>Radio/Cassette</Stereo>
+			<Automatic>Yes</Automatic>
+			<Note>Need minor body works</Note>
+		</OPTIONS>
+		<OWNER>
+			<NAME>Arthur Shin </NAME>
+			<EMAIL>IHodgson@aDomain.Com</EMAIL>
+			<PHONE>781 781 782</PHONE>
+		</OWNER>
+	</VEHICLE>
+	<VEHICLE>
+		<INVENTORY_NUMBER>4</INVENTORY_NUMBER>
+		<MAKE>Ferrari</MAKE>
+		<MODEL>F355</MODEL>
+		<YEAR>1995</YEAR>
+		<PICTURE>FerrariF355.jpg</PICTURE>
+		<STYLE>Sport</STYLE>
+		<DOORS>2</DOORS>
+		<PRICE>45000</PRICE>
+		<MILEAGE>63000</MILEAGE>
+		<OPTIONS>
+			<Power_Locks>Yes</Power_Locks>
+			<Power_Window>Yes</Power_Window>
+			<Stereo>Radio/Cassette/CD</Stereo>
+			<Air_Conditioning>Yes</Air_Conditioning>
+			<Note>Luxury car</Note>
+		</OPTIONS>
+		<OWNER>
+			<NAME>Jungchul Frye</NAME>
+			<EMAIL>JFrye@aDomain.Com</EMAIL>
+			<PHONE>781 781 782</PHONE>
+		</OWNER>
+	</VEHICLE>
+	<VEHICLE>
+		<INVENTORY_NUMBER>5</INVENTORY_NUMBER>
+		<MAKE>BMW</MAKE>
+		<MODEL>3 Series</MODEL>
+		<YEAR>1998</YEAR>
+		<PICTURE>BMWSeries3.jpg</PICTURE>
+		<STYLE>Sedan</STYLE>
+		<DOORS>4</DOORS>
+		<PRICE>40000</PRICE>
+		<MILEAGE>12000</MILEAGE>
+		<OPTIONS>
+			<Power_Locks>Yes</Power_Locks>
+			<Power_Window>Yes</Power_Window>
+			<Interiors>Leather</Interiors>
+			<Stereo>Radio/Cassette/CD</Stereo>
+			<Air_Conditioning>Yes</Air_Conditioning>
+			<Note>Pre-owned</Note>
+		</OPTIONS>
+		<OWNER>
+			<NAME>Bill Pease</NAME>
+			<EMAIL>BPease@aDomain.Com</EMAIL>
+			<PHONE>781 781 782</PHONE>
+		</OWNER>
+	</VEHICLE>
+	<VEHICLE>
+		<INVENTORY_NUMBER>6</INVENTORY_NUMBER>
+		<MAKE>BMW</MAKE>
+		<MODEL>Z3</MODEL>
+		<YEAR>1998</YEAR>
+		<PICTURE>BMWZ3.jpg</PICTURE>
+		<STYLE>Convertible</STYLE>
+		<DOORS>2</DOORS>
+		<PRICE>33000</PRICE>
+		<MILEAGE>24000</MILEAGE>
+		<OPTIONS>
+			<Cover_Material>Plastic</Cover_Material>
+			<Power_Locks>Yes</Power_Locks>
+			<Power_Window>Yes</Power_Window>
+			<Alarm>Yes</Alarm>
+			<Interiors>Fabric</Interiors>
+			<Stereo>Radio/Cassette/CD</Stereo>
+			<Air_Conditioning>Yes</Air_Conditioning>
+			<Note>Pre-owned, very clean</Note>
+		</OPTIONS>
+		<OWNER>
+			<NAME>Scott Tufo</NAME>
+			<EMAIL>STufo@aDomain.Com</EMAIL>
+			<PHONE>781 781 783</PHONE>
+		</OWNER>
+	</VEHICLE>
+	<VEHICLE>
+		<INVENTORY_NUMBER>7</INVENTORY_NUMBER>
+		<MAKE>Dodge</MAKE>
+		<MODEL>RAM</MODEL>
+		<YEAR>1997</YEAR>
+		<PICTURE>DodgeRAM1500.jpg</PICTURE>
+		<STYLE>Truck</STYLE>
+		<DOORS>2</DOORS>
+		<PRICE>22000</PRICE>
+		<MILEAGE>45000</MILEAGE>
+		<OPTIONS>
+			<Stereo>Radio</Stereo>
+			<Max_Load>1500</Max_Load>
+			<Note>Heavy duty Vehicle</Note>
+		</OPTIONS>
+		<OWNER>
+			<NAME>Dealer</NAME>
+		</OWNER>
+	</VEHICLE>
+	<VEHICLE>
+		<INVENTORY_NUMBER>8</INVENTORY_NUMBER>
+		<MAKE>Honda</MAKE>
+		<MODEL>Accord</MODEL>
+		<YEAR>1995</YEAR>
+		<PICTURE>HondaAccord.jpg</PICTURE>
+		<PRICE_YEN>25000000</PRICE_YEN>
+		<STYLE>Sedan</STYLE>
+		<DOORS>4</DOORS>
+		<PRICE>8500</PRICE>
+		<MILEAGE>145000</MILEAGE>
+		<OPTIONS>
+			<Power_Locks>Yes</Power_Locks>
+			<Stereo>Radio/Cassette</Stereo>
+			<Automatic>Yes</Automatic>
+		</OPTIONS>
+		<OWNER>
+			<NAME>Bob Johnson</NAME>
+			<PHONE>781 781 783</PHONE>
+		</OWNER>
+	</VEHICLE>
+	<VEHICLE>
+		<INVENTORY_NUMBER>9</INVENTORY_NUMBER>
+		<MAKE>Dodge</MAKE>
+		<MODEL>RAM 2500</MODEL>
+		<YEAR>1996</YEAR>
+		<PICTURE>DodgeRAM2500.jpg</PICTURE>
+		<STYLE>Truck</STYLE>
+		<DOORS>2</DOORS>
+		<PRICE>25000</PRICE>
+		<MILEAGE>23000</MILEAGE>
+		<OPTIONS>
+			<Stereo>Radio/Cassette</Stereo>
+			<Max_Load>2500</Max_Load>
+			<Note>Heavy duty truck</Note>
+		</OPTIONS>
+		<OWNER>
+			<NAME>Pia Kinnear</NAME>
+			<EMAIL>PKinnearo@aDomain.Com</EMAIL>
+			<PHONE>781 781 784</PHONE>
+		</OWNER>
+	</VEHICLE>
+	<VEHICLE>
+		<INVENTORY_NUMBER>10</INVENTORY_NUMBER>
+		<MAKE>Ford</MAKE>
+		<MODEL>Explorer</MODEL>
+		<YEAR>1996</YEAR>
+		<PICTURE>FordExplorer.jpg</PICTURE>
+		<STYLE>Sport Utility</STYLE>
+		<DOORS>4</DOORS>
+		<PRICE>18000</PRICE>
+		<MILEAGE>105000</MILEAGE>
+		<OPTIONS>
+			<Power_Locks>Yes</Power_Locks>
+			<Stereo>Radio/Cassette</Stereo>
+			<Automatic>Yes</Automatic>
+			<Interiors>Fabric</Interiors>
+			<Air_Conditioning>Yes</Air_Conditioning>
+			<Note>Pre-owned, very clean</Note>
+		</OPTIONS>
+		<OWNER>
+			<NAME>Shawn Denoncour</NAME>
+			<EMAIL>SDenoncour@aDomain.Com</EMAIL>
+			<PHONE>781 781 785</PHONE>
+		</OWNER>
+	</VEHICLE>
+</VEHICLES>
