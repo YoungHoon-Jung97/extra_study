@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- ○ mapper 엘리먼트의 『namespace="패키지 경로가 포함된 인터페이스"』 -->
+<!-- - 인터페이스 내부에 메소드명이 선언되어 있어야 한다. -->
+<!-- - 이 메소드 명과 『id="식별자"』가 일치해야 한다. -->
+<mapper namespace="com.test.mybaits.IClubDAO">
+	<insert id="add">
+		insert into tbl_club (sin,name)
+		values(#{sin},#{name})
+	</insert>
+
+	<select id="search" resultType="java.lang.Integer">
+		select count(*) as count
+		from tbl_club
+		where name =#{name}
+
+	</select>
+
+</mapper>
