@@ -1,0 +1,324 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="EUC-KR">
+<title>adminSignForm.jsp</title>
+<style>
+
+/* 전체 리셋 및 기본 스타일 */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+body {
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* 컨텐츠 컨테이너 */
+.content {
+  width: 100%;
+  max-width: 600px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* 폼 스타일 */
+.form {
+  width: 100%;
+}
+
+/* 폼 섹션 */
+.form__section {
+  margin-bottom: 20px;
+}
+
+/* 폼 그룹 (각 입력 필드 세트) */
+.form__group {
+  margin-bottom: 15px;
+}
+
+/* 폼 필드 (라벨 + 입력) */
+.form__field {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+/* 라벨 스타일 */
+.form__label {
+  width: 80px;
+  font-size: 14px;
+  color: #333;
+  font-weight: normal;
+}
+
+/* 입력 래퍼 (입력 필드 + 버튼) */
+.form__input-wrapper {
+  display: flex;
+  flex: 1;
+  gap: 5px;
+}
+
+/* 입력 필드 */
+.form__input {
+  flex: 1;
+  height: 40px;
+  padding: 0 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.form__input::placeholder {
+  color: #aaa;
+}
+
+.form__input:focus {
+  outline: none;
+  border-color: #999;
+}
+
+/* 중복확인 버튼 */
+.btn.btn--check {
+  background-color: #e0e0e0;
+  border: none;
+  border-radius: 4px;
+  padding: 0 15px;
+  height: 40px;
+  color: #333;
+  font-size: 13px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.btn.btn--check:hover {
+  background-color: #d0d0d0;
+}
+
+/* 에러 메시지 */
+.form__error {
+  margin-left: 80px;
+  font-size: 12px;
+  color: #ff3333;
+  display: none; /* 기본적으로 숨김 */
+}
+
+/* 에러 표시시 스타일 */
+.form__group.has-error .form__input {
+  border-color: #ff3333;
+}
+
+.form__group.has-error .form__error {
+  display: block;
+}
+
+/* 주민번호 입력 (추가 구현) */
+.jumin-group {
+  display: flex;
+  flex: 1;
+  align-items: center;
+}
+
+.jumin-input {
+  width: 120px;
+  flex: none;
+}
+
+.dash {
+  margin: 0 5px;
+  color: #666;
+}
+
+.dot-group {
+  display: flex;
+  margin-left: 10px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background-color: #000;
+  border-radius: 50%;
+  margin-right: 2px;
+}
+
+/* 우편번호 검색 버튼 */
+.btn-postcode {
+  background-color: #e0e0e0;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 15px;
+  color: #333;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+/* 버튼 그룹 */
+.form__actions {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* 회원가입, 취소, 뒤로가기 버튼 */
+.btn.btn--submit,
+.btn.btn--reset,
+.btn.btn--back {
+  width: 100%;
+  height: 50px;
+  background-color: #e6e6e6;
+  border: none;
+  border-radius: 4px;
+  color: #333;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn.btn--submit:hover,
+.btn.btn--reset:hover,
+.btn.btn--back:hover {
+  background-color: #d8d8d8;
+}
+
+/* 추가 필요한 스타일 (이미지에 맞게) */
+/* 주민번호 입력 섹션 */
+.jumin-section {
+  display: flex;
+  align-items: center;
+}
+
+.jumin-section .form__input:first-child {
+  width: 120px;
+  flex: none;
+}
+
+.jumin-section .form__input:last-child {
+  width: 30px;
+  flex: none;
+}
+
+/* 반응형 스타일 */
+@media (max-width: 768px) {
+  .form__field {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .form__label {
+    margin-bottom: 5px;
+    width: 100%;
+  }
+  
+  .form__input-wrapper {
+    width: 100%;
+  }
+  
+  .form__error {
+    margin-left: 0;
+  }
+}
+
+</style>
+</head>
+<body>
+
+<div class="content">
+    <form id="joinForm" class="form form--join" method="get" action="">
+        <div class="form__section">
+
+            <!-- 이메일 입력 -->
+            <div class="form__group">
+                <div class="form__field">
+                    <label for="email" class="form__label">이메일</label>
+                    <div class="form__input-wrapper">
+                        <input type="email" class="form__input" id="email"
+                        placeholder="아이디(이메일)" maxlength="100" required data-type="email" />
+                        <button type="button" class="btn btn--check" data-check="email">중복확인</button>
+                    </div>
+                </div>
+                <p class="form__error" data-error="email">이메일을 입력하세요</p>
+            </div>
+
+            <!-- 이름 입력 -->
+            <div class="form__group">
+                <div class="form__field">
+                    <label for="name" class="form__label">이름</label>
+                    <div class="form__input-wrapper">
+                        <input type="text" class="form__input" id="name"
+                        placeholder="이름" maxlength="20" name="name" required data-type="name" />
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 전화번호 입력 -->
+            <div class="form__group">
+                <div class="form__field">
+                    <label for="tel" class="form__label">전화번호</label>
+                    <input type="tel" class="form__input" id="tel"
+                    placeholder="전화번호" name="tel" data-type="tel" />
+                </div>
+            </div>
+
+            <!-- 은행 선택-->
+            <div class="form__group">
+              <div class="form__field">
+                <label for="bank" class="form__label">은행</label>
+                <select name="bank" id="bank">
+                  <option value="1">기업은행</option>
+                  <option value="2">농협은행</option>
+                  <option value="3">카카오뱅크</option>
+                  <option value="4">토스</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- 계좌번호 입력-->
+            <div class="form__group">
+              <div class="form__field">
+                <label for="account" class="form__label">계좌번호</label>
+                <input type="text" class="form__input" id="account"
+                placeholder="계좌번호" name="account" required />
+              </div>
+            </div> 
+
+            <!-- 예금주 입력-->
+            <div class="form__group">
+              <div class="form__field">
+                <label for="depositor" class="form__label">예금주</label>
+                <input type="text" class="form__input" id="depositor"
+                placeholder="예금주" name="depositor" required />
+              </div>
+            </div> 
+
+        </div><!-- .form__section -->
+
+        <!-- 버튼 그룹 -->
+        <div class="form__actions">
+            <button type="submit" class="btn btn--submit">회원가입</button>
+            <button type="reset" class="btn btn--reset">취소</button>
+            <button type="button" class="btn btn--back">뒤로가기</button>
+        </div>
+
+    </form><!-- .form -->
+</div> <!-- .content -->
+
+
+
+</body>
+</html>
